@@ -24,22 +24,5 @@ div.player > div.volume {
     margin-left: 100px;
 }
 
-             /*
-
-<div class="player">
-    <audio id="player" loop></audio>
-    <div id="track">---</div>
-    <span>&#128266;</span>
-    <input type="button" value="-" onClick="onQuieter();">
-    <input type="button" value="+" onClick="onLouder();">
-    <span id="volume">0%</span>
-
-    <ul>
-    %for index in indices:
-        <li><a href="javascript:onPlay({{index}});">Track {{int(index)+1}}</a></li>
-    %end
-    </ul>
-</div>
-
-
-*/
+div.player > div.list {
+}

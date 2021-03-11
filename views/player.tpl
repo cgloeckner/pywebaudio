@@ -6,15 +6,17 @@
     <div class="volume">&#128266;
         <input type="button" value="-" onClick="onQuieter();">
         <input type="button" value="+" onClick="onLouder();">
-        <span id="volume">0%</span>
+        <span id="volume">---</span>
     </div>
 
-    <p>CLICK TO PLAY FOR ALL:</p>
-    <ul>
-    %for index in indices:
-        <li><a href="javascript:onPlay({{index}});">Track {{int(index)+1}}</a></li>
-    %end
-    </ul>
+    <div class="list">
+        <p>CLICK TO PLAY FOR ALL:</p>
+        <ul>
+%for index in indices:
+            <li><a href="javascript:onPlay({{index}});">Track {{int(index)+1}}</a></li>
+%end
+        </ul>
+    </div>
 </div>
 
 <script>
@@ -33,10 +35,14 @@ function onUpdate() {
 }
 
 function getVolumeDelta(v) {
-    if (v > 0.25) {
+    if (v > 0.5) {
+        return 0.1
+    } else if (v > 0.25) {
         return 0.05;
+    } else if (v > 0.1) {
+        return 0.03
     } else {
-        return v * 0.25;
+        return 0.01;
     }
 }
 
@@ -86,16 +92,18 @@ function showTrack() {
 
 function showVolume() {  
     var player = $('#player')[0];
-    var v = parseInt(player.volume * 100);
+    var v = parseInt(player.volume * 100) + '%'
     if (player.paused) {
-        v = 0;
+        v = '(' + v + ')';
     }
-    $('#volume')[0].innerHTML = v + '%';
+    $('#volume')[0].innerHTML = v;
 }
 
+$('#player')[0].volume = 0.1;
+
+showVolume()
 pull();
 
-$('#player')[0].volume = 0.1;
 </script>
 
 %include("footer")
