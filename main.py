@@ -27,7 +27,7 @@ class AudioServer(object):
         self.playlists[sid] = {
             'dir'   : tmp_dir,
             'root'  : root,
-            'active': None
+            'active': '0'
         }
         
         redirect('/player/{0}'.format(sid))
@@ -69,7 +69,7 @@ class AudioServer(object):
             plist = self.playlists[sid]
             return plist['active']
 
-        run(host='0.0.0.0', port=8080, server='gevent')
+        run(host='0.0.0.0', port=8080, server='gevent', debug=True)
 
 
 if __name__ == '__main__':

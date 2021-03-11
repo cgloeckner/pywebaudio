@@ -1,0 +1,45 @@
+html {
+    background-color: rgb(100, 100, 100);
+}
+
+form.upload,
+div.player {
+    background-color: white;
+
+    width: 500px;
+    height: 500px;
+    padding: 5px;
+
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form.upload > input {
+    width: 100%;
+    height: 100%;
+}
+
+div.player > div.volume {
+    margin-left: 100px;
+}
+
+             /*
+
+<div class="player">
+    <audio id="player" loop></audio>
+    <div id="track">---</div>
+    <span>&#128266;</span>
+    <input type="button" value="-" onClick="onQuieter();">
+    <input type="button" value="+" onClick="onLouder();">
+    <span id="volume">0%</span>
+
+    <ul>
+    %for index in indices:
+        <li><a href="javascript:onPlay({{index}});">Track {{int(index)+1}}</a></li>
+    %end
+    </ul>
+</div>
+
+
+*/
