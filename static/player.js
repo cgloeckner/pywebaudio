@@ -20,7 +20,17 @@ function getVolumeDelta(v) {
         return 0.01;
     }
 }
-
+ 
+function setVolume(v) {
+    var player = $('#player')[0];
+    player.volume = v;
+    localStorage.setItem('volume', v);
+    if (player.paused) {
+        player.play();
+    }
+    showVolume();
+}
+   
 function onQuieter() {
     var player = $('#player')[0];
     var v = player.volume;
@@ -29,13 +39,9 @@ function onQuieter() {
     if (v < 0.01) {
         v = 0.01;
     }
-    player.volume = v;
-    if (player.paused) {
-        player.play();
-    }
-    showVolume();
+    setVolume(v);
 }
-   
+
 function onLouder() {
     var player = $('#player')[0];
     var v = player.volume;
@@ -44,11 +50,7 @@ function onLouder() {
     if (v > 1.0) {
         v = 1.0;
     }
-    player.volume = v; 
-    if (player.paused) {
-        player.play();
-    }    
-    showVolume();
+    setVolume(v);
 }
 
 function onToggle() { 
@@ -100,6 +102,15 @@ function onStart(sid) {
     };
     */
 
-    session = sid
+    session = sid;
+
+    // setup default volume
+    default_volume = localStorage.getItem('volume');;
+    if (default_volume == null) {
+        default_volume = 0.15;
+    }
+    var player = $('#player')[0];
+    player.volume = default_volume;
+    
     pull();
 }    
