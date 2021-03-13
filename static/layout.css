@@ -2,27 +2,58 @@ html {
     background-color: rgb(100, 100, 100);
 }
 
-form.upload,
+div.upload,
 div.player {
-    background-color: white;
+    background-color: white;  
+    border: 1px solid black;
+    border-radius: 15px;
 
     width: 500px;
-    height: 500px;
     padding: 5px;
 
-    margin-top: 25px;
+    margin: 5px;
     margin-left: auto;
     margin-right: auto;
 }
 
-form.upload > input {
+div.upload {
+    height: 130px;
+}
+
+div.upload > form > input {
     width: 100%;
     height: 100%;
+    padding: 25px;
+}
+
+div.player {
+    padding: 15px;
+    height: 40px;
+    font-size: xx-large;
 }
 
 div.player > div.volume {
-    margin-left: 100px;
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-div.player > div.list {
+div.player > div.volume > span {
+    cursor: pointer;
+    user-select: none;
+}
+
+div.player > div.volume > span.button {
+    width: 25px;
+}
+
+div.player > div.volume > span#volume {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+span.muted {
+    color: grey;
+    text-decoration: line-through;
 }
